@@ -1,7 +1,8 @@
 ## Runloop
 
-** [源码参考](https://github.com/apple/swift-corelibs-foundation/blob/5e27d971d04268d9cf6eee3445dc70c0736eaed4/CoreFoundation/RunLoop.subproj/CFRunLoop.c) **
+** [源码参考](https://github.com/apple/swift-corelibs-foundation/blob/5e27d971d04268d9cf6eee3445dc70c0736eaed4/CoreFoundation/RunLoop.subproj/CFRunLoop.c)**
 
+---
 **如何管理事件/消息，如何让线程在没有处理消息时休眠以避免资源占用、在有消息到来时立刻被唤醒**
 ```
 Run loops are part of the fundamental infrastructure associated with threads. A run loop is an event processing loop that you use to schedule work and coordinate the receipt of incoming events. The purpose of a run loop is to keep your thread busy when there is work to do and put your thread to sleep when there is none.

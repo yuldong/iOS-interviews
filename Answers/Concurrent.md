@@ -38,6 +38,8 @@ group、barrier、semaphore
 
 ### 有哪些类型的线程锁，分别介绍下作用和使用场景
 @synchronized、 NSLock、NSRecursiveLock、NSCondition、NSConditionLock、pthread_mutex、dispatch_semaphore、OSSpinLock、atomic(property) 
+### 属性修饰符atomic的内部实现是怎么样的?能保证线程安全吗
+spinlock_t，真实底层实现为mutex_tt互斥锁。
 ### NSOperationQueue中的maxConcurrentOperationCount默认值
 ### NSTimer、CADisplayLink、dispatch_source_t 的优劣
 前两者依赖runloop执行，作为timesource塞进mode中的集合中。

@@ -14,6 +14,7 @@ copy，为了避免数据被污染，比如multiple对它进行赋值，如果�
 是否生成新的对象，即retaincount是增加1，还是创建新的对象。
 
 ### NSString使用copy关键字，内部是怎么实现的？string本身会copy吗？
+copyWithZone: => 推测内部进行了一次retain
 
 ### 使用NSArray 保存weak对象，会有什么问题？
 没问题、保存到数组时，会进行一次强引用。
@@ -70,3 +71,7 @@ resolveMethod中通过runtime增加方法
 ### 是否愿意在MRC环境下进行开发
 
 ### 还有什么问题吗？
+
+
+### 参考 
+- [源码搜索](https://searchcode.com/)

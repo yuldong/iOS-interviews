@@ -18,7 +18,8 @@ struct objc_class : objc_object {
 ```
 
 #### 为什么要设计metaclass
-通过meta class创建类对象
+通过meta-class创建类对象
+
 #### class_copyIvarList & class_copyPropertyList区别
 ``` C
 struct property_t {
@@ -40,13 +41,6 @@ struct ivar_t {
 };
 ```
 #### class_rw_t 和 class_ro_t 的区别
-#### category如何被加载的,两个category的load方法的加载顺序，两个category的同名方法的加载顺序
-category 中的load都会执行，执行顺序可以在 compile source中调整。
-
-category 中的同名方法会同时被保存到 class_rw_t 中
-
-#### category & extension区别，能给NSObject添加Extension吗，结果如何
-category是runtime动态添加到类中，extension在编译时已经绑定到所属类
 
 #### 消息转发机制，消息转发机制和其他语言的消息机制优劣对比
 objc_msgSend流程: 判断receiver是否为nil，获取isa，cache查找，lookUpImpOrForward -> method list查找，按照继承链(superclass)查找，resolveMethod，_objc_msgForward_impcache
@@ -65,20 +59,6 @@ static const char *sel_cname(SEL sel) {
 
 Method: typedef struct objc_method *Method; 包含了SEL以及IMP
 
-#### load、initialize方法的区别什么？在继承关系中他们有什么区别
-``` C
-(*load_method)(cls, SEL_load);
-```
-load 是app运行时，在main执行之前执行，执行顺序为 父类、子类、分类
-
-``` C
-((void(*)(Class, SEL))objc_msgSend)(cls, SEL_initialize);
-```
-initialize是类首次调用类所属方法时，
-
-load肯定会执行且只会执行一次，而initialize可能一次都不执行
-
-initialize也可能会多次执行，所以一般会使用 self == Object.class来避免
 ### 内存管理
 #### weak的实现原理？SideTable的结构是什么样的
 SideTables[obj];

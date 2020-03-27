@@ -49,7 +49,7 @@ category 中的同名方法会同时被保存到 class_rw_t 中
 category是runtime动态添加到类中，extension在编译时已经绑定到所属类
 
 #### 消息转发机制，消息转发机制和其他语言的消息机制优劣对比
-objc_msgSend流程: 判断receiver是否为nil，获取isa，cache查找，lookUpImpOrForward -> method list查找，按照继承链查找，resolveMethod，_objc_msgForward_impcache
+objc_msgSend流程: 判断receiver是否为nil，获取isa，cache查找，lookUpImpOrForward -> method list查找，按照继承链(superclass)查找，resolveMethod，_objc_msgForward_impcache
 
 消息转发: forwardingTargetForSelector 转发到其他对象，则重复走上述的 `objc_msgSend流程`。再走methodSignatureForSelector: 方法。随后走forwardInvocation:方法。
 

@@ -6,8 +6,27 @@
 ### 实现原理
 **基于libs-base源码探究**
 step1: 动态创建子类并添加父类Behavior
-step2: class 替换 [object_setClass(id obj, Class cls)]
+
+step2: class 替换 [object_setClass(id obj, Class cls)] 
+
+```
+1、step2 修改 instance的isa指向, 所以真实的set方法走到了子类
+2、重写class方法，隐藏内部实现
+```
+
 step3: override keyPath对应的set方法
+
+set方法调用: 
+``` Objective-C
+{
+    // pre setting code here
+    [self willChangeValueForKey: key];
+    (*imp)(self, _cmd, val);
+    // post setting code here
+    [self didChangeValueForKey: key];
+}
+```
+
 step4: 注册
 
 ### 如何手动关闭kvo
@@ -18,13 +37,21 @@ step4: 注册
 
 ### 通过KVC修改属性会触发KVO么
 KVC原理: 
-优先根据[setKey:、_setKey:]method进行赋值
+set -> 优先根据[setKey:、_setKey:]method进行赋值
 
 **再判断**
-```
+``` C
 + (BOOL) accessInstanceVariablesDirectly
 ```
 顺序判断 _key、_isKey、key、isKey 成员变量
+
+get: -> getKey, key, isKey,
+
+**再判断**
+``` C
++ (BOOL) accessInstanceVariablesDirectly
+```
+顺序判断 _getKey, _key, _isKey, key, isKey
 
 ### 哪些情况下使用kvo会崩溃，怎么防护崩溃
 - KVO的被观察者dealloc时仍然注册着KVO导致的crash

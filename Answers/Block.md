@@ -2,6 +2,8 @@
 
 **[源码参考](https://github.com/apple/swift-corelibs-foundation)**
 
+**编译命令: xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc filename.m**
+
 ---
 ### block的内部实现，结构体是什么样的
 ``` C

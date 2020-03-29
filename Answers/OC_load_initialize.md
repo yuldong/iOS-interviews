@@ -24,3 +24,7 @@ initialize可能一次都不执行，每个类只初始化一次；
 ((void(*)(Class, SEL))objc_msgSend)(cls, SEL_initialize);
 ```
 **因为走的消息发送，如果子类没有实现该方法时，会调用父类的此方法（所以父类此方法被执行多次的情况）；一般会使用 self == Object.class来避免**
+
+
+#### 参考
+- [Objective-C +load vs +initialize](http://blog.leichunfeng.com/blog/2015/05/02/objective-c-plus-load-vs-plus-initialize/)

@@ -44,3 +44,6 @@ category 中的同名方法会同时被保存到 class_rw_t 中
 
 #### category & extension区别，能给NSObject添加Extension吗，结果如何
 category是runtime动态添加到类中，extension在编译时已经绑定到所属类
+
+#### 参考
+- [Objective-C Category 的实现原理](http://blog.leichunfeng.com/blog/2015/05/18/objective-c-category-implementation-principle/)

@@ -6,9 +6,10 @@
 ### 结构模型
 #### 介绍下runtime的内存模型（isa、对象、类、metaclass、结构体的存储信息等）
 ``` C
-struct objc_class {
-    Class _Nonnull isa  OBJC_ISA_AVAILABILITY;
-};
+struct objc_object {
+private:
+    isa_t isa;
+}
 struct objc_class : objc_object {
     // Class ISA;
     Class superclass;
@@ -42,10 +43,12 @@ struct ivar_t {
 ```
 #### class_rw_t 和 class_ro_t 的区别
 
-#### 消息转发机制，消息转发机制和其他语言的消息机制优劣对比
-objc_msgSend流程: 判断receiver是否为nil，获取isa，cache查找，lookUpImpOrForward -> method list查找，按照继承链(superclass)查找，resolveMethod，_objc_msgForward_impcache
+#### 消息发送，消息转发机制和其他语言的消息机制优劣对比
+objc_msgSend流程: 判断receiver是否为nil，获取isa，cache查找，lookUpImpOrForward -> method list查找(线性或者二分查找)，按照继承链(superclass)查找，走动态解析；
 
-消息转发: forwardingTargetForSelector 转发到其他对象，则重复走上述的 `objc_msgSend流程`。再走methodSignatureForSelector: 方法。随后走forwardInvocation:方法。
+动态解析: resolveMethod，再走method list查找，按照继承链(superclass)查找，走消息转发；
+
+消息转发: forwardingTargetForSelector 转发到其他对象，重复走上述的 `objc_msgSend流程`。再走methodSignatureForSelector: 方法 -> 随后走forwardInvocation:方法。
 
 #### IMP、SEL、Method的区别和使用场景
 IMP: typedef void (*IMP)(void /* id, SEL, ... */ ); 函数指针，函数的真正执行地址
@@ -104,7 +107,6 @@ static inline void pop(void *token);
 static inline id *autoreleaseFast(id obj);
 ```
 
-
 #### ARC的实现原理？ARC下对retain & release做了哪些优化
 对不同的变量修饰符，编译器在合适的位置插入相应的代码来管理内存(引用计数)。
 TaggedPointer
@@ -129,8 +131,5 @@ object_getclass: obj->getIsa()
 - [Objective-C 中的消息与消息转发](https://blog.ibireme.com/2013/11/26/objective-c-messaging/)
 - [RuntimePDF](https://github.com/DeveloperErenLiu/RuntimePDF)
 - [源码分析 weak 对象自动置空原理](https://debugly.cn/2017/07/17-objc-weak-obj-imp.html)
-- [Objective-C Associated Objects 的实现原理](https://blog.leichunfeng.com/blog/2015/06/26/objective-c-associated-objects-implementation-principle/)
-- [Objective-C +load vs +initialize](http://blog.leichunfeng.com/blog/2015/05/02/objective-c-plus-load-vs-plus-initialize/)
-- [Objective-C Category 的实现原理](http://blog.leichunfeng.com/blog/2015/05/18/objective-c-category-implementation-principle/)
 - [Objective-C Autorelease Pool 的实现原理](http://blog.leichunfeng.com/blog/2015/05/31/objective-c-autorelease-pool-implementation-principle/)
 - [理解 ARC 实现原理](https://juejin.im/post/5ce2b7386fb9a07eff005b4c)

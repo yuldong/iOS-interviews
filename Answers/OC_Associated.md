@@ -41,3 +41,7 @@ typedef OBJC_ENUM(uintptr_t, objc_AssociationPolicy) {
                                             *   The association is made atomically. */
 };
 ```
+
+
+#### 参考
+- [Objective-C Associated Objects 的实现原理](https://blog.leichunfeng.com/blog/2015/06/26/objective-c-associated-objects-implementation-principle/)

@@ -127,6 +127,30 @@ class: self, object_getClass(self)
 objc_getClass: look_up_class
 object_getclass: obj->getIsa()
 
+#### super
+``` C
+struct objc_super {
+    /// Specifies an instance of a class.
+    __unsafe_unretained _Nonnull id receiver;
+
+    /// Specifies the particular superclass of the instance to message. 
+    __unsafe_unretained _Nonnull Class super_class;
+#endif
+    /* super_class is the first class to search */
+};
+
+objc_msgSendSuper(struct objc_super * _Nonnull super, SEL _Nonnull op, ...);
+
+```
+**the superclass at which to start searching for the method implementation**
+
+#### 用处
+- 字典转模型 YYModel, MJExtension
+- 方法交换, Hook, Aspects
+- 关联对象, Associated
+- KVC
+- OC动态性由runtime支撑和实现
+
 ### 参考
 - [Objective-C 中的消息与消息转发](https://blog.ibireme.com/2013/11/26/objective-c-messaging/)
 - [RuntimePDF](https://github.com/DeveloperErenLiu/RuntimePDF)

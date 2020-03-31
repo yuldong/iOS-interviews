@@ -52,7 +52,12 @@ static inline id *autoreleaseFast(id obj);
 #### ARC的实现原理？ARC下对retain & release做了哪些优化
 对不同的变量修饰符，编译器在合适的位置插入相应的代码来管理内存(引用计数)。
 
-TaggedPointer
+Tagged Pointers
 
 #### ARC下哪些情况会造成内存泄漏
 **CF, Block, delegate, NSTimer、CADisplaylink**
+
+#### 参考
+- [深入理解 Tagged Pointer](https://www.infoq.cn/article/deep-understanding-of-tagged-pointer/)
+- [Tagged Pointer技术](https://www.mikeash.com/pyblog/friday-qa-2012-07-27-lets-build-tagged-pointers.html) **推荐**
+- [Tagged Pointer 官方视频](https://developer.apple.com/videos/play/wwdc2013/404/)

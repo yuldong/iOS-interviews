@@ -30,10 +30,21 @@ sidetable中的weak_table, 配合runloop。
 ### KVC平时怎么用的？举个例子
 
 ### KVC一定能修改readonly的变量吗？
+不一定，看是否允许进行 顺序查找 成员变量
+
+系统的比如UIApplication的applicationState无法修改，重写允许顺序查找成员也是崩。
 
 ### KVC还有哪些用法？
+集合操作，比如就数组中最小值，筛选等操作
 
 ### keyPath怎么用的？
+参考代码
+``` C
+    NSRange       r = [aKey rangeOfString: @"." options: NSLiteralSearch];
+    NSString	*key = [aKey substringToIndex: r.location];
+    NSString	*path = [aKey substringFromIndex: NSMaxRange(r)];
+    [[self valueForKey: key] setValue: anObject forKeyPath: path];
+```
 
 ### KVO的实现原理？
 1、生成新的子类并重写父类的behavior
@@ -45,24 +56,35 @@ sidetable中的weak_table, 配合runloop。
 次数不匹配，比如重复注册，多次移除
 
 ### KVO的观察者如果为weak，会有什么影响？
+set方法实际执行的是父类的 willchangge, setvalue 以及didchangge方法。
+如果为weak，可能导致观察者被释放，而无法监测到值的变更。
 
 ### 如何实现多代理？
 集合保存，参考观察者模式
 
 ### 给一个对象发消息，中间过程是怎样的？
-查找、转发，崩溃
+根据isa 查找(缓存，继承链) -> 动态解析(自身方法实现) -> 消息转发(转发、方法签名、invoke) -> 崩溃
+
 NSObject的metaclass的特殊性
 
 ### 消息转发的几个阶段
-运行时添加方法、转到其他对象执行(多继承的一种实现方式)、生成方法签名再给一次挽救机会、not recognise
+
+转到其他对象执行(多继承的一种实现方式)、生成方法签名再给一次挽救机会、not recognise
 
 ### 设计一个方案，在消息转发的阶段中统一处理掉找不到方法的这种crash
 resolveMethod中通过runtime增加方法
 
 ### 如何实现高效绘制圆角
+图片、UIpath
 避免离屏渲染
 
 ### 异步绘制过程中，将生成的image赋值给contents的这种方式，会有什么问题？
+需要理解UIView与CALayer的关系
+
+对UIView的大部分操作都是通过CALayer来实现的，设置image也是通过给layer.contents赋值来实现的；
+
+iOS要求所有的UI操作都必须在主线程上完成，所以如果在异步绘制完成image，就需要切换到主线程给contents赋值；
+
 
 ### 前公司负责的模块 用的语言 遇到的问题，怎么解决的 对于该项目当前存在的一些未解决的问题，给出一些解决方案
 1、block内部之间访问成员变量

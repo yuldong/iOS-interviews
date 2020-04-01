@@ -17,6 +17,14 @@ unrecognized selector、KVO、NSTimer、Container、Bad Access
 
 ### app启动
 通过环境变量DYLD_PRINT_STATISTICS查看启动时间
+
+1> 冷启动 - 首次启动
+- dyld
+- runtime
+- main
+
+2> 热启动 - 后台激活
+
 [官方资料一](https://developer.apple.com/videos/play/wwdc2017/413/)
 [官方资料二](https://developer.apple.com/videos/play/wwdc2016/406/)
 

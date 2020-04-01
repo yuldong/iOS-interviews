@@ -5,6 +5,13 @@
 
 ---
 
+#### ARC的实现原理？ARC下对retain & release做了哪些优化
+对不同的变量修饰符，编译器(LLVM)在合适的位置插入相应的代码来管理内存(引用计数)。
+
+再配合runtime对对象进行referenceCount的管理。
+
+Tagged Pointers，isa 的调整(位域)。
+
 #### weak的实现原理？SideTable的结构是什么样的
 SideTables[obj];
 ``` C
@@ -13,10 +20,16 @@ template <HaveOld haveOld, HaveNew haveNew,
 static id storeWeak(id *location, objc_object *newObj);
 
 struct SideTable {
+    // os_unfair_lock 实现的锁
     spinlock_t slock;
+    // nonpointer为1时，如果obj对应isa中的retain counts超出, 则从isa中的extra_rc中取出一部分到refcnts.
+    // 即: Move some retain counts to the side table from the isa field.
+    // nonpointer为0时存放obj的retain counts
     RefcountMap refcnts;
-    weak_table_t weak_table; // 
+    // 存放weak修饰的对象的引用信息
+    weak_table_t weak_table;
 }
+
 struct weak_table_t {
     weak_entry_t *weak_entries;
     size_t    num_entries;
@@ -48,11 +61,6 @@ static inline void *push();
 static inline void pop(void *token);
 static inline id *autoreleaseFast(id obj);
 ```
-
-#### ARC的实现原理？ARC下对retain & release做了哪些优化
-对不同的变量修饰符，编译器在合适的位置插入相应的代码来管理内存(引用计数)。
-
-Tagged Pointers
 
 #### ARC下哪些情况会造成内存泄漏
 **CF, Block, delegate, NSTimer、CADisplaylink**

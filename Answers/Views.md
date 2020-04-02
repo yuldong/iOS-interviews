@@ -42,4 +42,5 @@ UIKit –> active app's event queue –> window –> root view –>……–>low
 - [从 Auto Layout 的布局算法谈性能](https://draveness.me/layout-performance)
 - [View-Layer 协作](https://objccn.io/issue-12-4/)
 - [Using Responders and the Responder Chain to Handle Events](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/using_responders_and_the_responder_chain_to_handle_events?language=objc)
+- [iOS核心动画高级课程](https://zsisme.gitbooks.io/ios-/)
 

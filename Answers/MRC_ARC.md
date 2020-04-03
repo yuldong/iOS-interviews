@@ -84,8 +84,33 @@ page分三种情况处理，1、hotPage.full() 2、!hotPage.full() 3、noPage
 
 保存对象的逻辑为：*next++ = obj;
 
+三种需要自己手写 autorelease pool 的情况:
+- If you are writing a program that is not based on a UI framework, such as a command-line tool.(非基于UI框架的程序，比如命令行。)
+- If you write a loop that creates many temporary objects.(循环中创建了许多临时变量)
+- If you spawn a secondary thread.(生成了辅助线程)
+
 #### ARC下哪些情况会造成内存泄漏
 **CF, Block, delegate, NSTimer、CADisplaylink**
+
+#### MRC 下 set的写法
+``` C
+    // 网络流行写法
+    - (void)setCount:(NSNumber *)newCount {
+        if (_count != newCount) {
+            [_count release];
+            _count = [newCount retain];
+        }
+    }
+
+    // 官方demo
+    - (void)setCount:(NSNumber *)newCount {
+        [newCount retain];
+        [_count release];
+        // Make the new assignment.
+        _count = newCount;
+    }
+
+```
 
 #### 参考
 - [深入理解 Tagged Pointer](https://www.infoq.cn/article/deep-understanding-of-tagged-pointer/)

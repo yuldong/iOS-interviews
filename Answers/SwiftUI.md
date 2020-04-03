@@ -16,3 +16,6 @@
 4、框架在 State 改变时，调用上述函数获取对应新的 State 的 View，并与当前
 的 View 进行差分计算，并重新渲染更改的部分。
 ```
+
+### 参考
+- [SwiftUI 的一些初步探索 (一)](https://onevcat.com/2019/06/swift-ui-firstlook/)

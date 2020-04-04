@@ -11,10 +11,11 @@ delegate
 事件响应、动画处理、图像渲染
 
 ### 隐式动画 & 显示动画
-隐式动画: 使用uiview自带的API设置某些属性可以执行动画，而直接调用就不行。
-显示动画: 将动动作显示添加到自定的layer上来实现。
+隐式动画: 未指定动画类型，仅改变了一个属性，然后Core Animation来决定如何并且何时去做动画
 
-**UIView 默认情况下禁止了 layer 动画，但是在 animation block 中又重新启用了它们**
+显示动画: 将动画动作显示添加到自定的layer上来实现。
+
+**使用uiview自带的API设置某些属性可以执行动画，而直接调用就不行；UIView 默认情况下禁止了 layer 动画，但是在 animation block 中又重新启用了它们**
 
 ### 响应链
 UIResponder

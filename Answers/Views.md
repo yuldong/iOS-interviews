@@ -10,6 +10,10 @@ delegate
 
 事件响应、动画处理、图像渲染
 
+注意drawRect的性能消耗, 尝试使用响应的Layer来实现绘图操作。
+
+无法避免使用drawRect时，尝试指定绘图区域来提高绘图效率。
+
 ### 隐式动画 & 显示动画
 隐式动画: 未指定动画类型，仅改变了一个属性，然后Core Animation来决定如何并且何时去做动画
 
@@ -43,5 +47,6 @@ UIKit –> active app's event queue –> window –> root view –>……–>low
 - [从 Auto Layout 的布局算法谈性能](https://draveness.me/layout-performance)
 - [View-Layer 协作](https://objccn.io/issue-12-4/)
 - [Using Responders and the Responder Chain to Handle Events](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/using_responders_and_the_responder_chain_to_handle_events?language=objc)
-- [iOS核心动画高级课程](https://zsisme.gitbooks.io/ios-/)
-
+- [iOS核心动画高级课程](https://github.com/qunten/iOS-Core-Animation-Advanced-Techniques)
+- [绘图与图片的处理](https://github.com/qunten/iOS-Core-Animation-Advanced-Techniques/blob/master/14-%E5%9B%BE%E5%83%8FIO/%E5%9B%BE%E5%83%8FIO.md)
+- [图层的性能](https://github.com/qunten/iOS-Core-Animation-Advanced-Techniques/blob/master/15-%E5%9B%BE%E5%B1%82%E6%80%A7%E8%83%BD/15-%E5%9B%BE%E5%B1%82%E6%80%A7%E8%83%BD.md)

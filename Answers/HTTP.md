@@ -72,3 +72,6 @@ https的不足：
 ### websocket
 简历在http基础上协议，连接的发起端仍然是客户端，建立连接后，就不区分客户端或服务端了。
 **建立连接后，需要完成一次握手的步骤来切换websocket通信**
+
+### QUIC
+[科普：QUIC协议原理分析](https://zhuanlan.zhihu.com/p/32553477)

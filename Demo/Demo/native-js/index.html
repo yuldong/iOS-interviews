@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Native-JS</title>
+</head>
+
+<body>
+    名字：<span id="name"></span>
+    <br />
+    <button onclick="responseSwift()">响应Swift</button>
+    <script type="text/javascript">
+        function sayHello(name) {
+            document.getElementById("name").innerHTML = name
+            return "Swift你也好！"
+        }
+
+        function responseSwift() {
+            window.webkit.messageHandlers.AppModel.postMessage("WebView点击，发送消息给Swift！")
+        }
+    </script>
+</body>
+
+</html>

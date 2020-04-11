@@ -13,6 +13,7 @@
 		CD74063E24420FED006B1AA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD74063C24420FED006B1AA1 /* Main.storyboard */; };
 		CD74064024420FF5006B1AA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD74063F24420FF5006B1AA1 /* Assets.xcassets */; };
 		CD74064324420FF5006B1AA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD74064124420FF5006B1AA1 /* LaunchScreen.storyboard */; };
+		CD74064C2442118A006B1AA1 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = CD74064B2442118A006B1AA1 /* index.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		CD74063F24420FF5006B1AA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD74064224420FF5006B1AA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD74064424420FF5006B1AA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD74064B2442118A006B1AA1 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		CD74063524420FEC006B1AA1 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				CD74064A2442111C006B1AA1 /* native-js */,
 				CD74063624420FED006B1AA1 /* AppDelegate.swift */,
 				CD74063824420FED006B1AA1 /* SceneDelegate.swift */,
 				CD74063A24420FED006B1AA1 /* ViewController.swift */,
@@ -65,6 +68,14 @@
 				CD74064424420FF5006B1AA1 /* Info.plist */,
 			);
 			path = Demo;
+			sourceTree = "<group>";
+		};
+		CD74064A2442111C006B1AA1 /* native-js */ = {
+			isa = PBXGroup;
+			children = (
+				CD74064B2442118A006B1AA1 /* index.html */,
+			);
+			path = "native-js";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD74064324420FF5006B1AA1 /* LaunchScreen.storyboard in Resources */,
+				CD74064C2442118A006B1AA1 /* index.html in Resources */,
 				CD74064024420FF5006B1AA1 /* Assets.xcassets in Resources */,
 				CD74063E24420FED006B1AA1 /* Main.storyboard in Resources */,
 			);

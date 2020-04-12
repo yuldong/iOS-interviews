@@ -5,16 +5,12 @@
 **WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegate**
 - WKNavigationDelegate 
 
-
+`负责webpage的加载与跳转`
 
 
 - WKUIDelegate
   
 `遵守该协议，用来实现webpage行为对应的native UI展示`
-
-
-
-
 
 - WKScriptMessageHandler
   
@@ -45,3 +41,4 @@
 
 ### 参考
 - [WKWebView使用JS与Swift交互](https://tomoya92.github.io/2018/07/05/swift-webview-javascript/)
+- [WKWebView基本使用](https://juejin.im/post/5a3123dc6fb9a045104a7def)

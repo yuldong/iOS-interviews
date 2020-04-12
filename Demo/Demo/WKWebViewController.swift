@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class WKWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
+class WKWebViewController: UIViewController, WKNavigationDelegate {
 
     let html = try! String(contentsOfFile: Bundle.main.path(forResource: "index", ofType: "html")!, encoding: .utf8)
     
@@ -40,6 +40,42 @@ extension WKWebViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         print(message.name)
         print(message.body)
+    }
+}
+
+extension WKWebViewController: WKUIDelegate {
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+        let alertVC = UIAlertController(title: "Tips", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "确定", style: .destructive) { (action) in
+            completionHandler()
+        }
+        alertVC.addAction(action)
+        present(alertVC, animated: true, completion: nil)
+    }
+
+    func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
+        let alertVC = UIAlertController(title: "Confirm", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "确定", style: .destructive) { (action) in
+            completionHandler(true)
+        }
+        alertVC.addAction(action)
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (action) in
+            completionHandler(false)
+        }
+        alertVC.addAction(cancelAction)
+        present(alertVC, animated: true, completion: nil)
+    }
+
+    func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
+        let alertVC = UIAlertController(title: "Input", message: prompt, preferredStyle: .alert)
+        alertVC.addTextField { (text) in
+            text.placeholder = defaultText
+        }
+        let action = UIAlertAction(title: "确定", style: .destructive) { (action) in
+            completionHandler(alertVC.textFields?[0].text)
+        }
+        alertVC.addAction(action)
+        present(alertVC, animated: true, completion: nil)
     }
 }
 

@@ -11,6 +11,7 @@
     名字：<span id="name"></span>
     <br />
     <button onclick="responseSwift()">响应Swift</button>
+    <button onclick="responseSwift2()">响应Swift2</button>
     <script type="text/javascript">
         function sayHello(name) {
             document.getElementById("name").innerHTML = name
@@ -19,6 +20,10 @@
 
         function responseSwift() {
             window.webkit.messageHandlers.AppModel.postMessage("WebView点击，发送消息给Swift！")
+        }
+
+        function responseSwift2() {
+            window.webkit.messageHandlers.AppModel2.postMessage("WebView点击，发送消息给Swift！")
         }
     </script>
 </body>

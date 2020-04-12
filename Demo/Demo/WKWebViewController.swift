@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  WKWebViewController.swift
 //  Demo
 //
 //  Created by yrion on 2020/4/11.
@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController, WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegate {
+class WKWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 
     let html = try! String(contentsOfFile: Bundle.main.path(forResource: "index", ofType: "html")!, encoding: .utf8)
     
@@ -27,6 +27,7 @@ class ViewController: UIViewController, WKScriptMessageHandler, WKUIDelegate, WK
         configuration.preferences = preference
         configuration.userContentController = WKUserContentController()
         configuration.userContentController.add(self, name: "AppModel")
+        configuration.userContentController.add(self, name: "AppModel2")
         
         var webV = WKWebView(frame: self.view.bounds, configuration: configuration)
         webV.uiDelegate = self
@@ -35,8 +36,9 @@ class ViewController: UIViewController, WKScriptMessageHandler, WKUIDelegate, WK
     }()
 }
 
-extension ViewController {
+extension WKWebViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        print(message.name)
         print(message.body)
     }
 }

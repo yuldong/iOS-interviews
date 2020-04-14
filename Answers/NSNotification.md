@@ -3,7 +3,7 @@
 ---
 
 ### 关键结构 以及 说明
-``` Objective-c
+``` swift
 struct Notification {
     /// A tag identifying the notification.
     public var name: Name

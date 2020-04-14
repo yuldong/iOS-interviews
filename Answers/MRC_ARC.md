@@ -4,7 +4,7 @@
 **[源码参考](https://github.com/RetVal/objc-runtime)**
 
 ---
-
+**objc_ownership([weak, strong, none])**
 #### ARC的实现原理？ARC下对retain & release做了哪些优化
 对不同的变量修饰符，编译器(LLVM)在合适的位置插入相应的代码来管理内存(引用计数)。
 

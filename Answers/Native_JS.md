@@ -36,9 +36,21 @@
 
 
 ### Javascriptcore
+> JSContext 是 JS 执行上下文，你可以把它理解为 JS 运行的环境
+> 
+> JSValue 是对 JavaScript 值的引用，任何 JS 中的值都可以被包装为一个 JSValue
+> 
+> JSVirtualMachine 表示 JavaScript 执行的独立环境
+> 
+> JSManagedValue 是对 JSValue 的包装，加入了“conditional retain”
+> 
+> JSExport 协议 -> 实现将 Objective-C 类及其实例方法，类方法和属性导出为 JavaScript 代码的协议
+
+
 
 
 
 ### 参考
 - [WKWebView使用JS与Swift交互](https://tomoya92.github.io/2018/07/05/swift-webview-javascript/)
 - [WKWebView基本使用](https://juejin.im/post/5a3123dc6fb9a045104a7def)
+- [深入剖析 iOS 与 JS 交互](https://zhuanlan.zhihu.com/p/31368159)

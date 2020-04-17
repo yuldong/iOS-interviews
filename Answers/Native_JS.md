@@ -30,11 +30,6 @@
   `通过给WKWebViewConfiguration.userViewcontroller增加不同的‘name’来实现不同的js函数调用`
 
 
-
-
-
-
-
 ### Javascriptcore
 > JSContext 是 JS 执行上下文，你可以把它理解为 JS 运行的环境
 > 
@@ -47,10 +42,13 @@
 > JSExport 协议 -> 实现将 Objective-C 类及其实例方法，类方法和属性导出为 JavaScript 代码的协议
 
 
+#### JSPatch
 
+#### Weex & react native
 
 
 ### 参考
 - [WKWebView使用JS与Swift交互](https://tomoya92.github.io/2018/07/05/swift-webview-javascript/)
 - [WKWebView基本使用](https://juejin.im/post/5a3123dc6fb9a045104a7def)
 - [深入剖析 iOS 与 JS 交互](https://zhuanlan.zhihu.com/p/31368159)
+- [JSPatch 实现原理详解](https://github.com/bang590/JSPatch/wiki/JSPatch-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3)

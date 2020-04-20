@@ -8,6 +8,8 @@
 
 **串行与并行、同步与异步**
 
+**同步完成多项任务，通过提高系统的资源利用率来提高系统的效率**
+
 ---
 
 ### iOS开发中有多少类型的线程？分别对比
@@ -44,10 +46,18 @@ dispatch_sync、dispatch_async、dispatch_barrier_async、dispatch_after、dispa
 group、semaphore、串行队列、加锁、barrier
 
 ### dispatch_once实现原理
-
+系统级的信号量
 
 ### 什么情况下会死锁
 相互等待，比如同步任务增加同步任务。
+
+> 禁止抢占（no preemption）：系统资源不能被强制从一个进程中退出。
+> 
+> 持有和等待（hold and wait）：一个进程可以在等待时持有系统资源。
+> 
+> 互斥（mutual exclusion）：资源只能同时分配给一个行程，无法多个行程共享。
+> 
+> 循环等待（circular waiting）：一系列进程互相持有其他进程所需要的资源。
 
 ### 有哪些类型的线程锁，分别介绍下作用和使用场景
 
@@ -72,6 +82,7 @@ spinlock_t，真实底层实现为mutex_t中的os_unfair_lock。
 能保证属性自身的读写是安全的，但不能保证属性内的值读写是安全的。
 
 ### NSOperationQueue中的maxConcurrentOperationCount默认值
+-1，表示不进行限制，由NSOperationQueue根据系统状态动态确定，支持并发操作。
 
 ### NSTimer、CADisplayLink、dispatch_source_t 的优劣
 前两者依赖runloop执行，作为timesource塞进mode中的集合中。

@@ -37,6 +37,7 @@ step4: 注册
 
 ### 通过KVC修改属性会触发KVO么
 KVC原理: 
+
 set -> 优先根据[setKey:、_setKey:]method进行赋值
 
 **再判断**

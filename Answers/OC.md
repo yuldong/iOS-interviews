@@ -30,11 +30,6 @@ struct NSObject_IMPL {
 
 #### superclass
 - class 的 superclass 指向 父类的 class； **如果没有父类，superclass为nil**
-- meta-class 的 superclass 指向 父类的 meta-calss； **基类的meta-class 的 superclass 指向 基类的 class**
+- meta-class 的 superclass 指向 父类的 meta-calss； **基类的meta-class 的 superclass 指向 基类的 class，NSObject的特殊性**
 
 **总结: instance 里存的是真实值， class, meta-class则是类的描述信息**
-
-
-
-
-

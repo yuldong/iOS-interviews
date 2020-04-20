@@ -43,8 +43,10 @@
 
 
 #### JSPatch
+基于runtime，进行方法替换
 
 #### Weex & react native
+基于jscore，达到js执行原生方法
 
 
 ### 参考

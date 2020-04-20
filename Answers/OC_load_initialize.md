@@ -9,6 +9,7 @@ load 会在在main执行之前通过runtime执行，执行顺序为 父类、子
 load肯定会执行且只会执行一次；
 
 **执行方式**
+不走消息转发，直接执行
 ``` C
 (*load_method)(cls, SEL_load);
 ```

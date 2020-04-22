@@ -4,6 +4,8 @@
 
 **编译命令: xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc filename.m**
 
+^(返回值)(参数列表){表达式}
+
 ---
 ### block的内部实现，结构体是什么样的
 ``` C
@@ -40,6 +42,7 @@ __block auto变量 转为Block_byref 结构体，其中会新增auto变量以及
 struct Block_byref {
     void *isa;
     // 指向自己的指针
+    // 作用: 不管__block变量配置在栈上还是堆上，都能够正确地访问该变量
     struct Block_byref *forwarding;
     volatile int32_t flags; // contains ref count
     uint32_t size;

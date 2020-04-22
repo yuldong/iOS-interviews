@@ -3,6 +3,14 @@
 
 **[源码参考](https://github.com/RetVal/objc-runtime)**
 
+> 自己生成的对象，自己所持有
+> 
+> 非自己生成的对象，自己也能持有
+> 
+> 自己持有的对象，不需要时自己释放
+> 
+> 非自己持有的对象无法自己释放
+
 ---
 **objc_ownership([weak, strong, none])**
 #### ARC的实现原理？ARC下对retain & release做了哪些优化

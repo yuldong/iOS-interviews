@@ -30,7 +30,7 @@ copyWithZone: => 推测内部进行了一次retain
 ### 有没有用过MRC？怎么用MRC？
 
 ### MRC和ARC的区别？
-手动实现和编译器实现、修饰符存在差别、对block的处理
+手动实现和编译器实现、修饰符存在差别、对block的处理、编译器会尽可能的保证对象的存活(额外多出来retain、release操作)
 
 ### weak修饰的属性释放后会被变成nil，怎么实现的？
 sidetable中的weak_table, 配合runloop。

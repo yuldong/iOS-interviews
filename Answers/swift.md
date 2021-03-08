@@ -3,3 +3,10 @@
 
 **[官方文档中文翻译](https://swiftgg.gitbook.io/swift/)**
 ---
+
+## Question
+- class & struct
+- optional
+- filter, map, reduce
+- guard
+

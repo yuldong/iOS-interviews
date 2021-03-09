@@ -9,4 +9,7 @@
 - optional
 - filter, map, reduce
 - guard
+- communication patterns
+    - delegate
+    - notification & observer
 

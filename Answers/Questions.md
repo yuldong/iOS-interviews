@@ -104,10 +104,14 @@ iOS要求所有的UI操作都必须在主线程上完成，所以如果在异步
 ### 是否愿意在MRC环境下进行开发
 
 ### 还有什么问题吗
-- swift or objective-c
+- swift or objective-c、code or storyboard
 - 是否有机会扩展技术(比如后端)
 - team & company
 - how can I fit in
+- career growth
+- product lifecycle
+- interviewers, find a topic
+- dissect the app, suggestion
 
 
 ### 参考 

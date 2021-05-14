@@ -20,6 +20,8 @@ NSThread: pthread的封装，面向对象，比较少用，debug。手动管理�
 
 **GCD**: 优化应用程序以支持多核处理器，自动管理线程的生命周期，不需要编写任何线程管理代码。
 控制起来比较麻烦，比如取消一个线程。无法对任务设置优先级。
+- serial queue
+- concurrent queue
 **Apple推荐**
 
 NSOperation: 面向对象，对gcd的封装，可进行取消、暂停操作，配合queue可以对任务设置优先级

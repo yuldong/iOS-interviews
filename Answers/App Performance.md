@@ -22,6 +22,18 @@ unrecognized selector、KVO、NSTimer、Container、Bad Access
 - dyld
 - runtime
 - main
+**pre-main - 系统库以及app可执行文件加载**
+```
+1、+load -> +initialize 或减少 +load 做的事情. 
+2、优化或减少framework
+3、减少类的数量、优化代码(无用、废弃代码，抽象重复代码)
+```
+**main - didFinishLaunch 结束前执行的逻辑**
+```
+1、日志、统计、预加载、第三方SDK初始化，懒加载或者异步
+2、viewDidLoad、 viewWillAppear 减少业务逻辑
+3、少用xib、storyboard，减少IO操作
+```
 
 2> 热启动 - 后台激活
 
